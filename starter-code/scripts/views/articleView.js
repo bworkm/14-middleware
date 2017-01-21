@@ -17,7 +17,12 @@
     return template(article);
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // DONE: What does this method do?  What is it's execution path?
+  // This is compiling Handlebars on the option-template. Then it's using the map function, to map the array, with a function call
+  // with author as an object, then it's returning HTML strings that will be appended to author-filter. Then it runs
+  // article.allCategories and passing in function rows as a callback and append the objects to category-filter.
+  // Then it calls from articleController.index. It's a callback function of articleController.index, and has multiple execution
+  // paths.
   articleView.populateFilters = function() {
     var options;
     var template = Handlebars.compile($('#option-template').text());
@@ -36,7 +41,9 @@
     });
   };
 
-  // COMMENT: What does this method do?  What is it's execution path?
+  // DONE: What does this method do?  What is it's execution path?
+  // This method is setting an event handler on filters that will only run once. Then it is updating the page based on what filter
+  // you select and making a new URL.
   articleView.handleFilters = function() {
     $('#filters').one('change', 'select', function() {
       var resource = this.id.replace('-filter', '');
@@ -86,6 +93,9 @@
    }; */
 
   // COMMENT: What does this method do?  What is it's execution path?
+  // This method is declaring a function and then it hides the about page. Then it removes all of the articles and updates the page
+  // and creates an html tag to add to the the index page at #articles and appends it into the page.
+  // Then it calls the functions populateFilters and handleFilters.
   articleView.index = function(articles) {
     $('#articles').show().siblings().hide();
 
